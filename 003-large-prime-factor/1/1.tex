@@ -1,0 +1,38 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\def\code#1{\texttt{#1}}
+\def\ph#1{\phantom{#1}}
+
+\begin{document}
+
+\title{Primality Testing With Regular Steps}
+\maketitle
+
+\section{Introduction}
+Consider the naive method for primality testing, if we would like to know if a natrual number $n$ is prime,
+we can just check if natural numbers between $2$ and $\lfloor\sqrt{n}\rfloor$ divide $n$, if any single number
+divides $n$ then we know that $n$ is not prime, otherwise it is. In the following implementation of naive
+primality test,\\
+
+\noindent
+\code{Version 1.0}\\\\
+\code{1\indent def prime(n):}\\
+\code{2\indent\ph{..}let hi = fl(sqrt(n))}\\
+\code{3\indent\ph{..}for(i=0; i<=hi; i++):}\\
+\code{4\indent\ph{....}n\%i === 0? return false : continue}\\
+\code{5\indent\ph{..}return true}\\
+
+\noindent
+we notice that there is some redundancy. For example, if we run $prime(5)$ the at some point in the function
+execution, we will compute both $5\%2$ and $5\%4$, but $(5\%2\neq 0) \implies (5\%4\neq 0)$ so it is not necessary to
+compute that again. This article will explore how we can make this primality test algorithmn by applying some
+preprocessing steps to try and determine which divisibility checks we can skip before we begin we enter the
+main loop of the program(line 3).\\
+
+\noindent
+\textbf{Lemma 1:} $(5\%2\neq 0) \implies (5\%4\neq 0)$
+
+\section{Base Case}
+From Lemma 1, we know that
+
+\end{document}
